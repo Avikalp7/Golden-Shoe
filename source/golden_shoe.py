@@ -13,6 +13,8 @@ def is_number(s):
         return False
 
 def connect(fname, url_to_scrape):
+	"""
+	Connect to the requested url using the get method of request, and extract it's HTML through BeatifulSoup"
 	try:
 		r = requests.get(url_to_scrape) 
 		soup = BeautifulSoup(r.text, "html.parser")
@@ -28,6 +30,9 @@ def connect(fname, url_to_scrape):
 
 
 def find_leaders(content):
+	"""
+	Find the players with top points
+	"""
 	index = 0
 	heading_index = 0
 	for line in content:
@@ -63,6 +68,9 @@ def find_leaders(content):
 
 
 def extract_name(line, index):
+	"""
+	Find name from a line that is known to contain it
+	"""
 	end_index = index
 	for char in line[index + 1 : ]:
 		if char != '<':
